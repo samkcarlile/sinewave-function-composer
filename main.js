@@ -50,6 +50,28 @@ var app = new Vue({
           this.notes = [];
         }
       }
+    },
+    downloadTable: function () {
+      //make csv string
+      var data = "note,frequency,equation,duration\n";
+      for (var i = 0; i < this.notes.length; i++) {
+        var note = this.notes[i];
+        data += note.val + "," + note.freq + ",f(x)=" + getFunctionString(note) + "," + "\"" + note.duration + "\"\n";
+      }
+
+      var blob = new Blob([data], {type: 'text/csv'});
+      if(window.navigator.msSaveOrOpenBlob) {
+          window.navigator.msSaveBlob(blob, "table.csv");
+      }
+      else{
+          var elem = window.document.createElement('a');
+          elem.href = window.URL.createObjectURL(blob);
+          elem.download = "table.csv";        
+          document.body.appendChild(elem);
+          elem.click();
+          window.URL.revokeObjectURL(elem.href);
+          document.body.removeChild(elem);
+      }
     }
   },
   computed: {
