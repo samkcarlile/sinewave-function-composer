@@ -6,6 +6,9 @@ var app = new Vue({
     inDur: "",
     notes: []
   },
+  created: function () {
+    this.loadStorage();
+  },
   methods: {
     addNote: function () {
       if (this.inNote.length < 1 || this.inFreq.length < 1 || this.inDur.length < 1) {
@@ -22,14 +25,30 @@ var app = new Vue({
       this.inDur = "";
 
       this.notes.push(newNote);
+      this.saveStorage();
     },
     removeNote: function (index) {
       this.notes.splice(index,1);
+      this.saveStorage();
     },
     clearAll: function () {
       var ok = confirm("Are you sure you want to clear the table?")
       if (ok) {
         this.notes = [];
+      }
+      this.saveStorage();
+    },
+    saveStorage: function () {
+      window.localStorage['savedTable'] = JSON.stringify(this.notes);
+    },
+    loadStorage: function () {
+      var data = window.localStorage['savedTable'];
+      if (window.localStorage['savedTable'] !== undefined) {
+        try {
+          this.notes = JSON.parse(data);
+        } catch (e) {
+          this.notes = [];
+        }
       }
     }
   },
@@ -52,6 +71,6 @@ var app = new Vue({
   }
 });
 
-getFunctionString = function (note) {
+function getFunctionString(note) {
   return "2*sin(" + note.freq*2 + "*pi*x)";
 }
