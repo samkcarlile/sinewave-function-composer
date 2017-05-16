@@ -31,6 +31,24 @@ var app = new Vue({
       this.notes.splice(index,1);
       this.saveStorage();
     },
+    moveUp: function(index) {
+      if (index === 0) {
+        return;
+      }
+      var note = this.notes[index];
+      var prevNote = this.notes[index - 1];
+      Vue.set(this.notes, index - 1, note);
+      Vue.set(this.notes, index, prevNote);
+    },
+    moveDown: function (index) {
+      if (index === this.notes.length - 1) {
+        return;
+      }
+      var note = this.notes[index];
+      var nextNote = this.notes[index + 1];
+      Vue.set(this.notes, index + 1, note);
+      Vue.set(this.notes, index, nextNote);
+    },
     clearAll: function () {
       var ok = confirm("Are you sure you want to clear the table?")
       if (ok) {
