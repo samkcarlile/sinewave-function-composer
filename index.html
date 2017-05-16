@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+  <head>
+    <title>GSFC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand">
+            GSFC
+          </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-offset-2 col-md-8">
+          <h3><b>Step 1</b> - Create your notes table!</h3>
+          <div class="panel panel-info table-input">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                Add notes to your table here!
+                </h3>
+            </div>
+            <div class="panel-body">
+              <label for="note">Note</label>
+              <input v-model="inNote" id="note" type="text" class="form-control" placeholder="Example: A4" />
+              <label for="freq">Frequency</label>
+              <input v-model="inFreq" id="freq" type="text" class="form-control" placeholder="Example: 220" />
+              <label for="duration">Duration</label>
+              <input v-model="inDur" id="duration" type="text" class="form-control" placeholder="Example: (0,1)" />
+              <button v-on:click="addNote" class="btn btn-md btn-primary">Add</button>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                My Table
+              </h3>
+            </div>
+            <table class="table">
+              <tr>
+                <th>#</th>
+                <th>Note</th>
+                <th>Frequency</th>
+                <th>Equation</th>
+                <th>Duration</th>
+              </th>
+
+              <tr v-for="(note, index) in notes">
+                <td>{{ index + 1 }}</td>
+                <td>{{ note.val }}</td>
+                <td>{{ note.freq }}</td>
+                <td>f(x) = 2sin({{ note.freq * 2 }}*pi*x)</td>
+                <td>{{ note.duration }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-offset-2 col-md-8">
+          <h3><b>Step 2</b> - Get your function!</h3>
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                Function Generator
+              </h3>
+            </div>
+            <div class="panel-body">
+              <p>Here's your function!</p>
+              <code>
+                {{ geoFunc }}
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-offset-2 col-md-8">
+          <h3><b>Step 3</b> - Copy & paste your function into <a target="_" href="https://geogebra.com">Geogebra!</a></h3>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-offset-2 col-md-8 text-center">
+          <h5>Created by <a target="_" href="http://samkc.me">Sam Carlile</a>. Source on <a target="_" href="#">Github</a></h5>
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+    </div> <!-- /app -->
+    
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
