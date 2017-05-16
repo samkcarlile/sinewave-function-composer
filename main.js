@@ -111,6 +111,7 @@ var app = new Vue({
   }
 });
 
+
 function getFunctionString(note) {
   return "2*sin(" + note.freq*2 + "*pi*x)";
 }
