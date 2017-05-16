@@ -14,8 +14,10 @@ var app = new Vue({
       if (this.inNote.length < 1 || this.inFreq.length < 1 || this.inDur.length < 1) {
         return;
       }
+      // make sure it's valid.
+      
       var newNote = {
-        val: this.inNote,
+        val: this.inNote.toLowerCase(),
         freq: parseFloat(this.inFreq),
         duration: this.inDur
       };
@@ -114,4 +116,8 @@ var app = new Vue({
 
 function getFunctionString(note) {
   return "2*sin(" + note.freq*2 + "*pi*x)";
+}
+
+function lookupNote(val) {
+
 }

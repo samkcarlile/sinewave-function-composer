@@ -33,9 +33,11 @@
             </div>
             <div class="panel-body">
               <label for="note">Note</label>
-              <input v-model="inNote" id="note" type="text" class="form-control" placeholder="Example: A4" />
+              <input v-model="inNote" id="note" type="text" class="form-control" placeholder="Examples: A4, Cb5, E#2" />
+              <br>
               <label for="freq">Frequency</label>
               <input v-model="inFreq" id="freq" type="text" class="form-control" placeholder="Example: 220" />
+              <br>
               <label for="duration">Duration</label>
               <input v-model="inDur" id="duration" type="text" class="form-control" placeholder="Example: (0,1)" />
               <br>
@@ -125,10 +127,11 @@
 
     </div> <!-- /app -->
     
-    
+
     
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/validator.min.js"></script>
 
     <script src="https://unpkg.com/vue"></script>
     <script src="main.js"></script>
