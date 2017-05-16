@@ -4,6 +4,11 @@
     <title>Geogebra Sinewave Function Composer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <style>
+    .edit-note {
+      max-width: 100px;
+    }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -63,11 +68,21 @@
               </th>
 
               <tr v-for="(note, index) in notes">
-                <td>{{ index + 1 }}</td>
-                <td>{{ note.val }}</td>
-                <td>{{ note.freq }}</td>
-                <td>f(x) = 2sin({{ note.freq * 2 }}*pi*x)</td>
-                <td>{{ note.duration }}</td>
+                <td>
+                  {{ index + 1 }}
+                </td>
+                <td>
+                  <input v-model="note.val" type="text" class=" form-control edit-note">
+                </td>
+                <td>
+                  <input v-model="note.freq" type="text" class=" form-control edit-note">
+                </td>
+                <td>
+                  f(x) = 2sin({{ note.freq * 2 }}*pi*x)
+                </td>
+                <td>
+                  <input v-model="note.duration" type="text" class=" form-control edit-note">
+                </td>
                 <td>
                   <button v-on:click="removeNote(index)" class="btn btn-xs btn-danger">X</button>
                     &nbsp;
