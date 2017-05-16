@@ -22,6 +22,15 @@ var app = new Vue({
       this.inDur = "";
 
       this.notes.push(newNote);
+    },
+    removeNote: function (index) {
+      this.notes.splice(index,1);
+    },
+    clearAll: function () {
+      var ok = confirm("Are you sure you want to clear the table?")
+      if (ok) {
+        this.notes = [];
+      }
     }
   },
   computed: {

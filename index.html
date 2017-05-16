@@ -38,7 +38,9 @@
               <input v-model="inFreq" id="freq" type="text" class="form-control" placeholder="Example: 220" />
               <label for="duration">Duration</label>
               <input v-model="inDur" id="duration" type="text" class="form-control" placeholder="Example: (0,1)" />
+              <br>
               <button v-on:click="addNote" class="btn btn-md btn-primary">Add</button>
+              <button v-on:click="clearAll" class="btn btn-md btn-default pull-right">Clear All</button>
             </div>
           </div>
 
@@ -55,6 +57,7 @@
                 <th>Frequency</th>
                 <th>Equation</th>
                 <th>Duration</th>
+                <th></th>
               </th>
 
               <tr v-for="(note, index) in notes">
@@ -63,6 +66,7 @@
                 <td>{{ note.freq }}</td>
                 <td>f(x) = 2sin({{ note.freq * 2 }}*pi*x)</td>
                 <td>{{ note.duration }}</td>
+                <td><button v-on:click="removeNote(index)" class="btn btn-danger">X</button></td>
               </tr>
             </table>
           </div>
