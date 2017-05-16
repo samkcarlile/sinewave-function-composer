@@ -110,8 +110,16 @@ var app = new Vue({
       res += "]";
       return res;
     },
+    CSVString: function () {
+      var str = "note,frequency,equation,duration\n";
+      for (var i = 0;i < this.notes.length; i++) {
+        var note = this.notes[i];
+        str += note.val + "," + note.freq + ",f(x)=" + getFunctionString(note) + ",\"" + note.duration + "\"\n";
+      }
+      return str;
+    },
     emailURL: function () {
-     return "mailto:?subject=look at this website&body=" + this.geoFunc;
+      return encodeURI("mailto:?subject=My Sinewave Function&body=Function:\n" + this.geoFunc + "\n\nTable:\n" + this.CSVString);
     }
   }
 });
@@ -119,8 +127,4 @@ var app = new Vue({
 
 function getFunctionString(note) {
   return "2*sin(" + note.freq*2 + "*pi*x)";
-}
-
-function lookupNote(val) {
-
 }
