@@ -109,6 +109,9 @@ var app = new Vue({
       res = res.substring(0, res.length - 1);
       res += "]";
       return res;
+    },
+    emailURL: function () {
+     return "mailto:?subject=look at this website&body=" + this.geoFunc;
     }
   }
 });
